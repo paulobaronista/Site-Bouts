@@ -1,0 +1,8 @@
+<?php 
+         	foreach($this->tecnologias->getSubmenus() AS $tecnologia)
+         	{
+         		?>
+    <input type="checkbox" class="setsEditarTecnologia tecnologia" <?php if(in_array($tecnologia->getIdbaseSubmenu(), $this->Sets)) print "checked";?> value="<?=$tecnologia->getIdbaseSubmenu()?>"><span class="tecnologia"><?=$tecnologia->getNome()?></span><br>
+    <?php 
+         	}
+    ?>

@@ -1,0 +1,56 @@
+<script>
+$(document).ready(function(){
+	$(".deletePespersctiva").on("click",function(){
+		var idProduto= $(this).attr("rel");
+		var idPerspectiva=  $(this).attr("rev");
+		if(confirm("Tem certeza que deseja excluir esta perspectiva?"))
+		{
+			$.ajax({
+    	        url: basePatch+"/admin/crud/produtos/removerPerspectiva",
+    	        type: 'POST',
+    	        success: function( data )  
+                { 
+    	        	$.ajax({
+	        	        url: basePatch+"/admin/crud/produtos/gerenciarPerspectivas",
+	        	        type: 'POST',
+	        	        success: function( data )  
+	                    {
+	        	        	$( "#popupPerspectivas" ).html(data);
+	                    },
+	                    data: {idProduto:idProduto},
+	        			});
+                },
+                data: {idProduto:idProduto, idPerspectiva:idPerspectiva},
+    	    });
+		}
+		return false;
+	})
+})
+</script>
+<div id="gerenciar-persp">
+	<?php 
+		if($this->lista)
+		{
+	?>
+	<ul>
+		<?php 
+			foreach($this->lista AS $lista)
+			{
+		?>
+		<li>
+			<figure><img src="<?=$this->basePath()?>/img/produtos/<?=$lista->getSrc()?>big.png"></figure>
+			<button type="button" class="btn btn-danger deletarAction deletePespersctiva" title="excluir item " rev="<?=$lista->getIdPerspectivas()?>" rel="<?=$lista->getProdutoTenis()->getIdtenis()?>">Excluir</button>
+		</li>
+		<?php 
+			}
+		}else
+		{
+			?>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<center>Não existe perspectivas cadastradas.</center>
+			<?php
+		}	
+?>
+	</ul>
+
+</div>

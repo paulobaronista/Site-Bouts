@@ -1,0 +1,52 @@
+<form class="formBanner">
+  <span class="bannerEsquerdo">
+  	<input type="text" class="titulo" placeholder="Digite o Título do banner"/><br/>
+  	<input type="text" class="url" placeholder="http://www.exemplo.com.br"/><br/>
+  	<input type="file" class="arquivo" /><br/><br/>
+  	<input type="submit" value="Adicionar" class="actionAdicionaBanner style-adicionar" title="Adicionar Banner"> <input type="submit" value="Gerenciar" class="style-gerenciar" title="Gerenciar Banner"><br/>
+  </span>
+
+  <span class="bannerDireto">
+    <h4>Campanha Home:</h4>
+    <input type="text" class="titulo" placeholder="<?=$this->campanhaHome->getTitulo()?>"/><br/>
+    <input type="text" class="url" placeholder="<?=$this->campanhaHome->getUrl()?>"/><br/>
+    <img alt="Imagem da Campanha" title="Imagem da Campanha" src="<?=$this->basePath("img/banners/".$this->campanhaHome->getSrc())?>"><br/><br/>
+    <input type="file" class="arquivo" /><br/><br/>
+    <input type="submit" value="Atualizar" class="style-adicionar atualizaCampanhaAction" title="Atualizar Campanha"><br/><br/>
+  </span>
+</form>
+
+<div class="accordion" id="accordion2">
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Gerenciar Banner
+      </a>
+    </div>
+
+    <div id="collapseOne" class="accordion-body collapse in">
+
+      <div class="accordion-inner">
+        <ul class="accordion-banner">
+        <?php 
+		  	foreach($this->bannersDestaque AS $banner)
+		  	{
+		  ?>
+         <li>
+            <img src="<?=$this->basePath("img/banners/".$banner->getSrc())?>">
+            <p><strong>Título:</strong> <?=$banner->getTitulo()?></p>
+            <button type="button" class="btn btn-danger deletarAction" rev="banner" rel="<?=$banner->getIdBanner()?>" title="excluir item">Excluir</button>
+         </li>
+         <?php 
+		  	}
+		 	?>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

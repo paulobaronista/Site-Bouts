@@ -1,0 +1,17 @@
+<div id="adm-news">
+	<div>
+		<ul>
+		<?php 
+			foreach($this->listaEmails AS $email)
+			{
+		?>
+			<li>
+			   <p><span class="txt-email"><?=$email->getEmail()?></span><span class="data-email"><strong>Data: </strong><?=$email->getData()->format("d/m/Y");?></span></p><a class="delete-email-news" rel="<?=$email->getIdnewslatter()?>" href="" title="Excluir">Excluir</a>
+       		</li>
+       		<?php 
+			}
+       		?>
+       	</ul>
+	</div>
+	<a href="<?=$this->basePath()?>/admin/crud/newslatter/exportar" target="_blank"><button class="" type="button" title="Exportar Lista">Exportar Lista</button></a>
+</div>

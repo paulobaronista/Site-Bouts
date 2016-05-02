@@ -1,0 +1,43 @@
+<table style="width:100%">
+	<tr>
+		<td style="width:10%"><strong>ID</strong></td>
+		<td style="width:40%"><strong>E-mail do departamento</strong></td>
+		<td style="width:40%"><strong>Nome do departamento</strong></td>
+		<td style="width:10%"></td>
+	</tr>
+	<?php 
+		foreach($this->listaEmails AS $contato)
+		{
+			?>
+			<tr>
+		<td style="width:10%"><?=$contato->getIdContato()?></td>
+		<td style="width:40%"><?=$contato->getEmail()?></td>
+		<td style="width:40%"><?=$contato->getFuncao()?></td>
+		<td style="width:10%"><button type="button" class="btn btn-danger eventActionExcluirContato" title="excluir" rel="<?=$contato->getIdContato()?>">Excluir</button></td>
+		<!-- <td style="width:10%"><input type="submit" title="excluir" class="eventActionExcluirContato" rel="<?=$contato->getIdContato()?>" value="Excluir"/></td> -->
+	</tr>
+			<?php
+		}
+	?>
+</table>
+	<?php 
+		if(!$this->listaEmails)
+		{
+			?>
+				<center>Não existe email's cadastrados.</center>
+			<?php
+		}
+	?>
+<br/><br/>
+<div class="faleConoscoShowAdicionar">
+<!-- <input type="submit" class="eventActionShowAdicionar" value="Adicionar Email"/> -->
+<button type="button" class="btn btn-primary eventActionShowAdicionar" title="Adicionar e-mail">Adicionar e-mail</button>
+</div>
+
+
+<div class="faleConoscoAdicionar" style="display:none">
+	<input class="funcao" type="text" placeholder="Digite o nome do departamento"><br/>
+	<input class="email" type="text" placeholder="Digite o e-mail do departamento"><br/>
+	<button type="button" class="btn btn-success salvarEmail" title="Salvar e-mail">Salvar</button>
+	<!-- <input type="submit" value="Salvar" class="salvarEmail"/> -->
+</div>

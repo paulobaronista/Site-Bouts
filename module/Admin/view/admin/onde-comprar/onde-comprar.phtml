@@ -1,0 +1,31 @@
+<form class="formComprar">
+	<input type="text" class="titulo" placeholder="Digite o Título do Site"/><br/>
+	<input type="text" class="url" placeholder="http://www.centauros.com.br"/><br/>
+	<input type="submit" value="Adicionar" class="actionAdicionaOndeComprar style-adicionar" title="Adicionar onde Comprar"> <input type="submit" value="Gerenciar" class="style-gerenciar" title="Adicionar onde Comprar"><br/>
+</form>
+
+<div class="accordion" id="accordion2">
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Gerenciar Onde Comprar
+      </a>
+    </div>
+
+    <div id="collapseOne" class="accordion-body collapse in">
+
+      <div class="accordion-inner">
+        <ul class="accordion-comprar">
+        <?php 
+        	foreach($this->ondeComprar->getSubmenus() AS $onde)
+        	{
+        ?>
+        <li><span><?=$onde->getNome()?></span><button type="button" class="btn btn-danger deletarAction" title="excluir item" rev="ondeComprar" rel="<?=$onde->getIdbaseSubmenu()?>">Excluir</button></li>
+      	<?php 
+        	}
+      	?>
+      </div>
+    </div>
+  </div>
+</div>

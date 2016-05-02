@@ -1,0 +1,32 @@
+<form class="formMidia">
+	<input type="text" class="titulo" placeholder="Digite o Título do Vídeo"/><br/>
+  <input type="text" class="url" placeholder="Ex: //www.youtube.com"/><br/>
+	<input type="submit" value="Adicionar" class="actionAdicionaMidia style-adicionar" title="Adicionar Mídia">
+  <input type="submit" value="Gerenciar" class="style-gerenciar" title="Gerenciar Mídia"><br/>
+</form>
+
+<div class="accordion" id="accordion2">
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Gerenciar Mídia
+      </a>
+    </div>
+
+    <div id="collapseOne" class="accordion-body collapse in">
+
+      <div class="accordion-inner">
+        <ul class="accordion-midia">
+        <?php 
+				foreach($this->midias AS $midia)
+				{
+					?>
+        <li><span><?=$midia->getTitulo()?></span><button type="button" class="btn btn-danger deletarAction" title="excluir item" rev="midia" rel="<?=$midia->getIdVideos()?>">Excluir</button></li>
+      	<?php 
+				}
+      	?>
+      </div>
+    </div>
+  </div>
+</div>
