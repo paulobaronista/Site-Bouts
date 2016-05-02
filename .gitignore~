@@ -1,0 +1,10 @@
+/data
+<<<<<<< HEAD
+/vendor
+=======
+/vendor
+/.settings
+/data/cache
+.project
+.buildpath
+>>>>>>> 585c85515f149c205b88687f091e028bf25a58dc

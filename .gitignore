@@ -1,0 +1,7 @@
+/data
+/vendor
+/.settings
+/data/cache
+.project
+.buildpath
+/composer.lock
